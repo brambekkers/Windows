@@ -1,10 +1,9 @@
 <script setup lang="ts">
-  import { storeToRefs } from 'pinia'
-  import { useApplicationStore } from '@/store/applications'
-  import Application from '@/components/Application.vue'
-  import Taskbar from '@/components/system/Taskbar.vue'
+import Application from '@/components/Application.vue'
+import Taskbar from '@/components/system/Taskbar.vue'
+import StartMenu from '@/components/system/StartMenu.vue'
 
-  const { applications } = storeToRefs(useApplicationStore())
+const { applications } = storeToRefs(useApplicationStore())
 </script>
 
 <template>
@@ -15,6 +14,8 @@
     :key="app.id"
     :isSelected="app.isSelected"
     :isEnlarged="app.isEnlarged"
-    :type="app.type" />
+    :type="app.type"
+  />
+  <StartMenu />
   <Taskbar />
 </template>

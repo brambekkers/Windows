@@ -7,7 +7,7 @@ export interface ApplicationStyle {
 }
 
 export interface Application {
-  id: number
+  id: string
   type: string
   isSelected: boolean
   isEnlarged: boolean

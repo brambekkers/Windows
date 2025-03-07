@@ -1,18 +1,18 @@
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
-import type { Application } from '@/types/Application'
-
 export const useApplicationStore = defineStore('applications', () => {
   const applications = ref<Application[]>([])
+  const mainApplication = ref<string | null>(null)
 
-  const selectApp = (id: number) => {
+  const selectApp = (id: string) => {
     applications.value.forEach((app) => {
       if (app.id !== id) app.isSelected = false
-      else app.isSelected = true
+      else {
+        app.isSelected = true
+        mainApplication.value = id
+      }
     })
   }
 
-  const addApplication = (type: string, forceOpen = false) => {
+  const createNewApp = (type: string) => {
     // Get the height of the window
     const windowHeight = window.innerHeight
     const windowWidth = window.innerWidth
@@ -21,16 +21,8 @@ export const useApplicationStore = defineStore('applications', () => {
     const randomHeight = Math.abs(Math.floor(Math.random() * (windowHeight - 250)))
     const randomWidth = Math.abs(Math.floor(Math.random() * (windowWidth - 500)))
 
-    if (!forceOpen) {
-      const currentApp = applications.value.find((app) => app.type === type)
-      if (currentApp) {
-        selectApp(currentApp.id)
-        return
-      }
-    }
-
-    applications.value.push({
-      id: new Date().valueOf(),
+    return {
+      id: uniqueId('app_'),
       isSelected: false,
       isEnlarged: false,
       type,
@@ -39,12 +31,26 @@ export const useApplicationStore = defineStore('applications', () => {
         left: randomWidth,
         height: '500px',
         width: '500px',
-        zIndex: 5
-      }
-    })
+        zIndex: 5,
+      },
+    }
   }
 
-  const closeApplication = (id: number) => {
+  const addApplication = (type: string, forceOpen = false) => {
+    if (!forceOpen) {
+      const currentApp = applications.value.find((app) => app.type === type)
+      if (currentApp) {
+        selectApp(currentApp.id)
+        return currentApp
+      }
+    }
+
+    const newApp = createNewApp(type)
+    applications.value.push(newApp)
+    return newApp
+  }
+
+  const closeApplication = (id: string) => {
     const index = applications.value.findIndex((app) => app.id === id)
     applications.value.splice(index, 1)
   }
@@ -53,11 +59,11 @@ export const useApplicationStore = defineStore('applications', () => {
     return applications.value.find((app) => app.type === type)
   }
 
-  const getApplicationById = (id: number) => {
+  const getApplicationById = (id: string) => {
     return applications.value.find((app) => app.id === id)
   }
 
-  const toggleAppSize = (id: number) => {
+  const toggleAppSize = (id: string) => {
     const app = getApplicationById(id)
     if (!app) return
     app.isEnlarged = !app.isEnlarged
@@ -65,10 +71,11 @@ export const useApplicationStore = defineStore('applications', () => {
 
   return {
     applications,
+    mainApplication,
     addApplication,
     closeApplication,
     getApplicationByType,
     toggleAppSize,
-    selectApp
+    selectApp,
   }
 })

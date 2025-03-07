@@ -1,38 +1,29 @@
 <script setup lang="ts">
-  import Minimize from '@/assets/icons/system/minimize.svg'
-  import Enlarge from '@/assets/icons/system/enlarge.svg'
-  import Enlarged from '@/assets/icons/system/enlarged.svg'
-  import Close from '@/assets/icons/system/close.svg'
-  import { useApplicationStore } from '@/store/applications'
+import Minimize from '@/assets/icons/system/minimize.svg'
+import Enlarge from '@/assets/icons/system/enlarge.svg'
+import Enlarged from '@/assets/icons/system/enlarged.svg'
+import Close from '@/assets/icons/system/close.svg'
 
-  defineProps<{
-    id: number
-    isEnlarged: boolean
-  }>()
-  const { closeApplication, toggleAppSize } = useApplicationStore()
+defineProps<{
+  id: string
+  isEnlarged: boolean
+}>()
+const { closeApplication, toggleAppSize } = useApplicationStore()
 </script>
 
 <template>
-  <nav class="system-bar">
+  <nav class="system-bar" @dblclick="toggleAppSize(id)">
     {{ id }}
 
     <div class="system-icons">
-      <span class="icon">
+      <span class="icon" @click.prevent="">
         <Minimize width="11" />
       </span>
-      <span
-        class="icon"
-        @click="toggleAppSize(id)">
-        <Enlarge
-          v-if="!isEnlarged"
-          width="11" />
-        <Enlarged
-          v-else
-          width="11" />
+      <span class="icon" @click="toggleAppSize(id)">
+        <Enlarge v-if="!isEnlarged" width="11" />
+        <Enlarged v-else width="11" />
       </span>
-      <span
-        class="icon close"
-        @click="closeApplication(id)">
+      <span class="icon close" @click="closeApplication(id)">
         <Close width="11" />
       </span>
     </div>
@@ -40,46 +31,46 @@
 </template>
 
 <style scoped>
-  .system-bar {
-    background: rgba($color: #fff, $alpha: 0.85);
+.system-bar {
+  background: var(--transparent-color);
 
-    backdrop-filter: blur(20px);
-    height: 44px;
+  backdrop-filter: blur(20px);
+  height: 44px;
 
-    padding: 0 0 0 14px;
+  padding: 0 0 0 14px;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .system-icons {
+    height: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-    .system-icons {
+    .icon {
       height: 100%;
+      padding: 0 18px;
+
       display: flex;
+      align-items: center;
 
-      .icon {
-        height: 100%;
-        padding: 0 18px;
+      &:hover {
+        background: rgba(0, 0, 0, 0.12);
+      }
 
-        display: flex;
-        align-items: center;
-
-        &:hover {
-          background: rgba(0, 0, 0, 0.12);
+      &.close {
+        .system-close {
+          stroke: black;
         }
+        &:hover {
+          background: #d52027;
 
-        &.close {
           .system-close {
-            stroke: black;
-          }
-          &:hover {
-            background: #d52027;
-
-            .system-close {
-              stroke: white !important;
-            }
+            stroke: white !important;
           }
         }
       }
     }
   }
+}
 </style>

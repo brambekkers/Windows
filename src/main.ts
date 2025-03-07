@@ -1,6 +1,3 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-
 import './styling/main.css'
 import App from './App.vue'
 

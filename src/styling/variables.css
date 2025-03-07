@@ -1,6 +1,12 @@
 :root {
-/* application */
-  --app-background-color: rgba(240, 240, 240, 0.85);
+  --transparent-color: rgba(240, 240, 240, 0.85);
+
+  /* application */
+  --app-background-color: var(--transparent-color);
   --app-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
   --app-backdrop-filter: blur(20px);
+  --app-border-radius: 8px;
+
+  /* taskbar */
+  --taskbar-height: 64px;
 }
