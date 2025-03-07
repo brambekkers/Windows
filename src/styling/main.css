@@ -1,0 +1,12 @@
+@import './reset.css';
+@import './variables.css';
+
+#windows {
+  height: 100dvh;
+  width: 100dvw;
+  overflow: hidden;
+
+  background-image: url('../assets/Wallpaper.png');
+  background-position: center;
+  background-size: cover;
+}

@@ -1,0 +1,6 @@
+:root {
+/* application */
+  --app-background-color: rgba(240, 240, 240, 0.85);
+  --app-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  --app-backdrop-filter: blur(20px);
+}
