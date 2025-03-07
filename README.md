@@ -21,7 +21,7 @@ A simple Windows-like interface built with Vue 3 and Vite. This project aims to 
 
 1. Clone the repository:
    ```sh
-   git clone [https://github.com/yourusername/windows-clone.git](https://github.com/brambekkers/Windows.git)
+   git clone https://github.com/brambekkers/Windows.git
    cd Windows
    ```
 
