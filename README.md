@@ -1,7 +1,52 @@
-# Vue 3 + Vite
+# Windows Clone (Vue + Vite)
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A simple Windows-like interface built with Vue 3 and Vite. This project aims to create the illusion of using a Windows operating system directly in the browser.
 
-## Recommended IDE Setup
+## Features
+- Desktop with draggable icons
+- Taskbar with start menu
+- Window management (open, close, minimize, maximize, and click interactions)
+- Built-in applications:
+  - Browser
+  - Settings
+  - Word Processor
+  - File Explorer
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Tech Stack
+- Vue 3
+- Vite
+- Pinia (for state management)
+
+## Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/windows-clone.git
+   cd windows-clone
+   ```
+
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+3. Run the development server:
+   ```sh
+   npm run dev
+   ```
+
+4. Open your browser and visit `http://localhost:5173`
+
+## Build for Production
+To create a production-ready build, run:
+```sh
+npm run build
+```
+The output will be in the `dist` folder.
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+This project is licensed under the MIT License.
+
