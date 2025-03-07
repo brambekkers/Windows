@@ -25,6 +25,10 @@ const { hideBadge = false } = defineProps<{
   transition: all 200ms ease-in-out;
   cursor: pointer;
 
+  & > * {
+    pointer-events: none;
+  }
+
   &.is-main {
     background: rgba(255, 255, 255, 0.46);
     box-shadow: rgba(0, 0, 0, 0.01) 4px 4px 8px;

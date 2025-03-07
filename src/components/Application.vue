@@ -6,8 +6,10 @@ import SystemBar from '@/components/application/SystemBar.vue'
 import ExplorerApp from '../apps/explorer/App.vue'
 import SettingsApp from '../apps/settings/App.vue'
 import WordApp from '../apps/word/App.vue'
+import EdgeApp from '../apps/edge/App.vue'
 
 const appMap = {
+  edge: EdgeApp,
   explorer: ExplorerApp,
   settings: SettingsApp,
   word: WordApp,

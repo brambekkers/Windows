@@ -12,7 +12,7 @@ const clickStart = () => {
 </script>
 
 <template>
-  <Icon :isActive="isOpen" hide-badge :is-main="mainApplication === 'start-menu'" @click="clickStart">
+  <Icon id="start" :isActive="isOpen" hide-badge :is-main="mainApplication === 'start-menu'" @click="clickStart">
     <MSLogo class="ms-logo" :height="48" />
   </Icon>
 </template>

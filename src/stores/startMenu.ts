@@ -5,7 +5,7 @@ export const useStartMenuStore = defineStore('start', () => {
 
   watch(mainApplication, (app) => {
     if (app === 'start-menu') return
-    // isOpen.value = false
+    isOpen.value = false
   })
 
   return { isOpen }

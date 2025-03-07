@@ -8,7 +8,8 @@ const startMenu = useTemplateRef<HTMLElement>('startMenu')
 const { mainApplication } = storeToRefs(useApplicationStore())
 
 onClickOutside(startMenu, (event) => {
-  if (!isOpen.value) return
+  const targetId = (event.target as HTMLElement).id
+  if (!isOpen.value || targetId === 'start') return
   isOpen.value = false
   mainApplication.value = ''
 })
