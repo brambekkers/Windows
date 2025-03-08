@@ -312,6 +312,7 @@
     "useApplicationStore": true,
     "Application": true,
     "ApplicationStyle": true,
-    "useStartMenuStore": true
+    "useStartMenuStore": true,
+    "ApplicationTypes": true
   }
 }

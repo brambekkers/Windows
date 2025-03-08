@@ -310,6 +310,6 @@ declare global {
   export type { Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
   // @ts-ignore
-  export type { ApplicationStyle, Application } from './types/Application'
+  export type { ApplicationTypes, ApplicationStyle, Application } from './types/Application'
   import('./types/Application')
 }

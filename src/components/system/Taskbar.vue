@@ -17,9 +17,10 @@ const settings = computed(() => getApplicationByType('settings'))
 const powerpoint = computed(() => getApplicationByType('powerpoint'))
 const steam = computed(() => getApplicationByType('steam'))
 
-const clickApplication = (type: string) => {
+const clickApplication = (type: ApplicationTypes) => {
   const app = addApplication(type)
   mainApplication.value = app.id
+  if (app.isMinimized) app.isMinimized = false
 }
 </script>
 

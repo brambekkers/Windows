@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// Components
 import SystemBar from '@/components/application/SystemBar.vue'
 
 // Apps
@@ -7,6 +6,7 @@ import ExplorerApp from '../apps/explorer/App.vue'
 import SettingsApp from '../apps/settings/App.vue'
 import WordApp from '../apps/word/App.vue'
 import EdgeApp from '../apps/edge/App.vue'
+import type { Application } from '@/types/Application'
 
 const appMap = {
   edge: EdgeApp,
@@ -16,39 +16,25 @@ const appMap = {
 }
 
 const { selectApp } = useApplicationStore()
-const { width, height } = useWindowSize()
 
-const appStyle = defineModel<ApplicationStyle>('appStyle', { required: true })
-const enlargedStyle = computed(() => {
-  return {
-    top: 0,
-    left: 0,
-    width: `${width.value}px`,
-    height: `${height.value - 64}px`,
-  }
+const app = defineModel<Application>({
+  required: true,
 })
-
-const { id, isEnlarged, isSelected, type } = defineProps<{
-  id: string
-  type: string
-  isSelected: boolean
-  isEnlarged: boolean
-}>()
 
 const applicationEl = ref(null)
 const applicationHandle = ref(null)
 
 const { style: positionStyle } = useDraggable(applicationEl, {
-  initialValue: { x: appStyle.value.left as number, y: appStyle.value.top as number },
+  initialValue: { x: app.value.style.left as number, y: app.value.style.top as number },
   handle: applicationHandle,
 })
 
 useResizeObserver(applicationEl, (entries) => {
   const entry = entries[0]
   const { width, height } = entry.contentRect
-  if (isEnlarged) return
-  appStyle.value.width = `${width}px`
-  appStyle.value.height = `${height}px`
+  if (app.value.isEnlarged) return
+  app.value.style.width = `${width}px`
+  app.value.style.height = `${height}px`
 })
 
 const parseStyleString = (string: string): { top?: string; left?: string } => {
@@ -66,42 +52,43 @@ watch(
   positionStyle,
   (pos) => {
     const { top, left } = parseStyleString(pos)
-    if (top) appStyle.value.top = top
-    if (left) appStyle.value.left = left
+    if (top) app.value.style.top = top
+    if (left) app.value.style.left = left
   },
   { immediate: true },
 )
 
 watch(
-  () => isSelected,
+  () => app.value.isSelected,
   (sel) => {
-    appStyle.value.zIndex = sel ? 6 : 5
+    app.value.style.zIndex = sel ? 6 : 5
   },
 )
 
 onMounted(() => {
-  const app = appMap[type]
-  if (app) createApp(app).mount(`#app_${id}`)
+  const vueApp = appMap[app.value.type]
+  if (vueApp) createApp(vueApp).mount(`#app_${app.value.id}`)
 })
 </script>
 
 <template>
   <div
     ref="applicationEl"
-    :style="isEnlarged ? enlargedStyle : appStyle"
+    :style="!app.isEnlarged ? app.style : ''"
     class="application-frame"
-    :class="{ enlarged: isEnlarged }"
-    @mousedown="selectApp(id)"
+    :class="{ enlarged: app.isEnlarged, minimized: app.isMinimized }"
+    @mousedown="selectApp(app.id)"
   >
-    <SystemBar ref="applicationHandle" :isEnlarged="isEnlarged" :id="id" />
-    <div :id="`app_${id}`"></div>
+    <SystemBar ref="applicationHandle" v-model="app" />
+    <div :id="`app_${app.id}`"></div>
   </div>
 </template>
 
 <style scoped>
 .application-frame {
+  background: rgb(230, 230, 230, 0.6);
+
   position: fixed;
-  background: var(--app-background-color);
   backdrop-filter: var(--app-backdrop-filter);
 
   min-width: 400px;
@@ -112,9 +99,30 @@ onMounted(() => {
   box-shadow: var(--app-box-shadow);
   z-index: 5;
 
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: translate 200ms ease-in-out;
+
+  & > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
   &.enlarged {
     transition: all 50ms ease-in-out;
     border-radius: 0 !important;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: calc(100dvh - 64px);
+  }
+
+  &.minimized {
+    z-index: 4;
+    translate: -50% 200dvh;
+    left: 50%;
   }
 
   &:active {

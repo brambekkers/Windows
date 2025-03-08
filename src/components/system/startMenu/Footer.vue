@@ -32,7 +32,7 @@ footer {
     gap: 12px;
     align-items: center;
     font-size: 14px;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     transition: all 200ms ease-in-out;
     padding: 8px 12px;
 

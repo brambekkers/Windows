@@ -1,3 +1,6 @@
+import NewApplications from '@/constants/applications'
+import type { Application } from '@/types/Application'
+
 export const useApplicationStore = defineStore('applications', () => {
   const applications = ref<Application[]>([])
   const mainApplication = ref<string | null>(null)
@@ -12,31 +15,32 @@ export const useApplicationStore = defineStore('applications', () => {
     })
   }
 
-  const createNewApp = (type: string) => {
-    // Get the height of the window
-    const windowHeight = window.innerHeight
-    const windowWidth = window.innerWidth
-
-    // Generate a random number within the range of the window height
-    const randomHeight = Math.abs(Math.floor(Math.random() * (windowHeight - 250)))
-    const randomWidth = Math.abs(Math.floor(Math.random() * (windowWidth - 500)))
-
+  const randomAppPosition = (appWidth: `${string}px`, appHeight: `${string}px`) => {
+    const windowWidth = window.innerWidth - +appWidth.split('px')[0]
+    const windowHeight = window.innerHeight - +appHeight.split('px')[0]
+    const randomHeight = Math.abs(Math.floor(Math.random() * windowHeight))
+    const randomWidth = Math.abs(Math.floor(Math.random() * windowWidth))
     return {
+      top: randomHeight,
+      left: randomWidth,
+    }
+  }
+
+  const createNewApp = (type: ApplicationTypes) => {
+    const newApp = NewApplications[type] || {}
+    const { top, left } = randomAppPosition(newApp.style.width, newApp.style.height)
+    return {
+      ...newApp,
       id: uniqueId('app_'),
-      isSelected: false,
-      isEnlarged: false,
-      type,
       style: {
-        top: randomHeight,
-        left: randomWidth,
-        height: '500px',
-        width: '500px',
-        zIndex: 5,
+        ...newApp.style,
+        top,
+        left,
       },
     }
   }
 
-  const addApplication = (type: string, forceOpen = false) => {
+  const addApplication = (type: ApplicationTypes, forceOpen = false) => {
     if (!forceOpen) {
       const currentApp = applications.value.find((app) => app.type === type)
       if (currentApp) {
@@ -55,18 +59,8 @@ export const useApplicationStore = defineStore('applications', () => {
     applications.value.splice(index, 1)
   }
 
-  const getApplicationByType = (type: string) => {
+  const getApplicationByType = (type: ApplicationTypes) => {
     return applications.value.find((app) => app.type === type)
-  }
-
-  const getApplicationById = (id: string) => {
-    return applications.value.find((app) => app.id === id)
-  }
-
-  const toggleAppSize = (id: string) => {
-    const app = getApplicationById(id)
-    if (!app) return
-    app.isEnlarged = !app.isEnlarged
   }
 
   return {
@@ -75,7 +69,6 @@ export const useApplicationStore = defineStore('applications', () => {
     addApplication,
     closeApplication,
     getApplicationByType,
-    toggleAppSize,
     selectApp,
   }
 })

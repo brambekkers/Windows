@@ -7,15 +7,9 @@ const { applications } = storeToRefs(useApplicationStore())
 </script>
 
 <template>
-  <Application
-    v-for="app of applications"
-    v-model:appStyle="app.style"
-    :id="app.id"
-    :key="app.id"
-    :isSelected="app.isSelected"
-    :isEnlarged="app.isEnlarged"
-    :type="app.type"
-  />
+  <template v-for="(app, i) of applications" :key="app.id">
+    <Application v-model="applications[i]" />
+  </template>
   <StartMenu />
   <Taskbar />
 </template>
