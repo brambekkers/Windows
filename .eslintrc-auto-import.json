@@ -313,6 +313,7 @@
     "Application": true,
     "ApplicationStyle": true,
     "useStartMenuStore": true,
-    "ApplicationTypes": true
+    "ApplicationTypes": true,
+    "Tab": true
   }
 }

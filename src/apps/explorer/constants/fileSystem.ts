@@ -6,22 +6,22 @@ export const fileSystem = {
     'Local Disk (C:)': {
       locked: false,
       size: '230GB',
-      type: 'folder',
+      type: 'drive_ms',
       sub: {
         'Program Files': {
           locked: false,
           size: '50GB',
           type: 'folder',
           sub: {
-            App1: { type: 'folder', size: '10MB' },
-            App2: { type: 'folder', size: '20MB' },
+            App1: { type: 'folder', size: '10MB', sub: {} },
+            App2: { type: 'folder', size: '20MB', sub: {} },
             Utilities: {
               locked: false,
               type: 'folder',
               size: '30MB',
               sub: {
-                Utility1: { type: 'exe', size: '5MB' },
-                Utility2: { type: 'file', size: '7MB' },
+                Utility1: { type: 'exe', size: '5MB', sub: {} },
+                Utility2: { type: 'file', size: '7MB', sub: {} },
               },
             },
           },
@@ -51,8 +51,8 @@ export const fileSystem = {
                   size: '3.5MB',
                   type: 'folder',
                   sub: {
-                    'Holiday.jpg': { type: 'jpg', size: '2MB' },
-                    'Birthday.png': { type: 'png', size: '1.5MB' },
+                    'Holiday.jpg': { type: 'file_image', size: '2MB' },
+                    'Birthday.png': { type: 'file_image', size: '1.5MB' },
                   },
                 },
                 Videos: {
@@ -60,7 +60,7 @@ export const fileSystem = {
                   size: '1.5MB',
                   type: 'folder',
                   sub: {
-                    'Video.mp4': { type: 'mp4', size: '1MB' },
+                    'Video.mp4': { type: 'file_video', size: '1MB' },
                   },
                 },
                 Music: {
@@ -68,7 +68,7 @@ export const fileSystem = {
                   size: '1.5MB',
                   type: 'folder',
                   sub: {
-                    'Music.mp3': { type: 'mp3', size: '1MB' },
+                    'Music.mp3': { type: 'file_music', size: '1MB' },
                   },
                 },
                 Downloads: {
@@ -88,7 +88,7 @@ export const fileSystem = {
             Default: {
               locked: true,
               size: '930MB',
-              type: 'folder',
+              type: 'drive_lock',
               sub: {},
             },
           },
@@ -96,15 +96,15 @@ export const fileSystem = {
         Windows: {
           locked: true,
           size: '74GB',
-          type: 'folder',
+          type: 'drive_lock',
           sub: {},
         },
       },
     },
     'Dev Drive (F:)': {
       locked: false,
-      size: '230GB',
-      type: 'folder',
+      size: '0B',
+      type: 'drive',
       sub: {},
     },
   },

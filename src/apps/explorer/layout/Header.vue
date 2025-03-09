@@ -29,6 +29,8 @@ defineProps<{
     </section>
     <section class="path">
       <PC height="16" @click="$emit('to', [])" />
+      <Crumb height="16" />
+      <p @click="$emit('to', [])">This PC</p>
       <template v-for="p in path" :key="p">
         <Crumb height="16" />
         <p @click="$emit('to', path.slice(0, path.indexOf(p) + 1))">

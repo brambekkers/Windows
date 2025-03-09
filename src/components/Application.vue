@@ -15,6 +15,7 @@ const appMap = {
   word: WordApp,
 }
 
+const { mainApplication } = storeToRefs(useApplicationStore())
 const { selectApp } = useApplicationStore()
 
 const app = defineModel<Application>({
@@ -58,12 +59,9 @@ watch(
   { immediate: true },
 )
 
-watch(
-  () => app.value.isSelected,
-  (sel) => {
-    app.value.style.zIndex = sel ? 6 : 5
-  },
-)
+watch([() => app.value.isSelected, mainApplication], ([sel, main]) => {
+  app.value.style.zIndex = sel || main === app.value.id ? 6 : 5
+})
 
 onMounted(() => {
   const vueApp = appMap[app.value.type]
