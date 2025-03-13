@@ -2,6 +2,7 @@ export default {
   explorer: {
     id: '',
     type: 'explorer',
+    name: 'Explorer',
     isSelected: false,
     isMinimized: false,
     isEnlarged: false,
@@ -23,6 +24,7 @@ export default {
   settings: {
     id: '',
     type: 'settings',
+    name: 'Settings',
     isSelected: false,
     isMinimized: false,
     isEnlarged: false,
@@ -30,14 +32,15 @@ export default {
     style: {
       top: 0,
       left: 0,
-      height: '500px',
-      width: '500px',
+      height: '800px',
+      width: '1200px',
       zIndex: 5,
     },
   },
   word: {
     id: '',
     type: 'word',
+    name: 'Microsoft Word',
     isSelected: false,
     isMinimized: false,
     isEnlarged: false,
@@ -53,6 +56,7 @@ export default {
   edge: {
     id: '',
     type: 'edge',
+    name: 'Microsoft Edge',
     isSelected: false,
     isMinimized: false,
     isEnlarged: false,
@@ -68,6 +72,7 @@ export default {
   powerpoint: {
     id: '',
     type: 'powerpoint',
+    name: 'Microsoft PowerPoint',
     isSelected: false,
     isMinimized: false,
     isEnlarged: false,
@@ -83,6 +88,7 @@ export default {
   steam: {
     id: '',
     type: 'steam',
+    name: 'Steam',
     isSelected: false,
     isMinimized: false,
     isEnlarged: false,

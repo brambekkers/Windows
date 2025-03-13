@@ -312,4 +312,7 @@ declare global {
   // @ts-ignore
   export type { ApplicationTypes, Tab, ApplicationStyle, Application } from './types/Application'
   import('./types/Application')
+  // @ts-ignore
+  export type { SettingsTitle } from './types/Settings'
+  import('./types/Settings')
 }

@@ -182,7 +182,7 @@
         "npm:@vue/eslint-config-prettier@^10.2.0",
         "npm:@vue/eslint-config-typescript@^14.4.0",
         "npm:@vue/tsconfig@0.7",
-        "npm:@vueuse/core@^12.8.2",
+        "npm:@vueuse/core@13",
         "npm:concurrently@^9.1.2",
         "npm:eslint-config-prettier@^10.1.1",
         "npm:eslint-plugin-vue@10",

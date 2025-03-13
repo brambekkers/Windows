@@ -4,7 +4,7 @@ import Right from '@/assets/icons/system/right.svg'
 import Up from '@/assets/icons/system/up.svg'
 import Refresh from '@/assets/icons/system/refresh.svg'
 import PC from '@/assets/icons/system/pc.svg'
-import Crumb from '@/assets/icons/system/crumb.svg'
+import Crumb from '@/assets/icons/system/chevronRight.svg'
 
 defineProps<{
   path: string[]

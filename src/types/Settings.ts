@@ -1,0 +1,13 @@
+export type SettingsTitle =
+  | 'Start'
+  | 'System'
+  | 'Bluetooth and devices'
+  | 'Network and Internet'
+  | 'Personal settings'
+  | 'Apps'
+  | 'Accounts'
+  | 'Language and time'
+  | 'Gameing'
+  | 'Accessibility'
+  | 'Privacy and security'
+  | 'Windows Update'

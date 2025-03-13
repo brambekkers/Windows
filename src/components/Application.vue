@@ -78,13 +78,13 @@ onMounted(() => {
     @mousedown="selectApp(app.id)"
   >
     <SystemBar ref="applicationHandle" v-model="app" />
-    <div :id="`app_${app.id}`"></div>
+    <main :id="`app_${app.id}`"></main>
   </div>
 </template>
 
 <style scoped>
 .application-frame {
-  background: rgb(230, 230, 230, 0.6);
+  background: rgb(230, 230, 230, 0.7);
 
   position: fixed;
   backdrop-filter: var(--app-backdrop-filter);
@@ -102,10 +102,11 @@ onMounted(() => {
   overflow: hidden;
   transition: translate 200ms ease-in-out;
 
-  & > div {
+  & > main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
   }
 
   &.enlarged {

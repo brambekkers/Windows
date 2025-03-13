@@ -17,6 +17,7 @@ export interface ApplicationStyle {
 export interface Application {
   id: string
   type: ApplicationTypes
+  name: string
   isSelected: boolean
   isMinimized: boolean
   isEnlarged: boolean

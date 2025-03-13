@@ -21,11 +21,10 @@ const { closeApplication } = useApplicationStore()
 
         {{ tab.title }}
       </div>
-
       <button class="new-tab"><Add /></button>
     </div>
     <div v-else>
-      {{ app.id }}
+      {{ app.name }}
     </div>
 
     <div class="system-icons">
@@ -47,14 +46,15 @@ const { closeApplication } = useApplicationStore()
 .system-bar {
   border: rgba(0, 0, 0, 0.057);
   height: 44px;
-
+  min-height: 44px;
   padding: 0 0 0 14px;
 
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 
   .tabs {
+    margin-top: auto;
     flex: 1;
     display: flex;
     gap: 10px;
