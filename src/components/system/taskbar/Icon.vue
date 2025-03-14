@@ -9,7 +9,7 @@ const { hideBadge = false } = defineProps<{
 <template>
   <div class="icon" :class="{ 'is-main': isMain }" :style="`justify-content: ${isActive ? 'flex-end' : 'center'}`">
     <slot />
-    <div v-if="isActive && !hideBadge" class="active-badge" />
+    <div v-if="isActive && !hideBadge" class="active-badge" :class="{ 'is-main': isMain }" />
   </div>
 </template>
 
@@ -38,10 +38,21 @@ const { hideBadge = false } = defineProps<{
     /* backdrop-filter: blur(20px); */
   }
   .active-badge {
-    background-color: #2f2f2f;
-    width: 5px;
-    height: 2.5px;
+    background-color: var(--windows-accent-color);
+    width: 8px;
+    height: 3px;
     border-radius: 2px;
+    transition: all 200ms ease-in-out;
+    translate: 0 2px;
+
+    &:not(.is-main) {
+      filter: grayscale(0.6);
+    }
+
+    &.is-main {
+      width: 16px;
+      height: 3px;
+    }
   }
 }
 </style>

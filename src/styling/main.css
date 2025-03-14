@@ -6,7 +6,8 @@
   width: 100dvw;
   overflow: hidden;
 
-  background-image: url('../assets/Wallpaper.png');
+  transition: background-image 400ms ease-in-out;
+  background-image: var(--windows-background-image);
   background-position: center;
   background-size: cover;
 }
@@ -22,6 +23,7 @@
 
 ::-webkit-scrollbar {
   width: 2px;
+  height: 2px;
 }
 
 ::-webkit-scrollbar-track {

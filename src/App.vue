@@ -3,6 +3,7 @@ import Application from '@/components/Application.vue'
 import Taskbar from '@/components/system/Taskbar.vue'
 import StartMenu from '@/components/system/StartMenu.vue'
 
+useLayoutStore()
 const { applications } = storeToRefs(useApplicationStore())
 </script>
 

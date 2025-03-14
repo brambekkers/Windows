@@ -315,6 +315,7 @@
     "useStartMenuStore": true,
     "ApplicationTypes": true,
     "Tab": true,
-    "SettingsTitle": true
+    "SettingsTitle": true,
+    "useLayoutStore": true
   }
 }

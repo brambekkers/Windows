@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const currentTab = defineModel<[SettingsTitle, string | undefined]>({
+const currentTab = defineModel<[SettingsTitle] | [SettingsTitle, string]>({
   required: true,
 })
 
@@ -14,16 +14,16 @@ const items = [
   { title: 'Language and time', icon: new URL('@/assets/favicons/time.png', import.meta.url).href },
   { title: 'Gaming', icon: new URL('@/assets/favicons/game.png', import.meta.url).href },
   { title: 'Accessibility', icon: new URL('@/assets/favicons/accessible.png', import.meta.url).href },
-  { title: 'Privacy en security', icon: new URL('@/assets/favicons/privacy.png', import.meta.url).href },
+  { title: 'Privacy and security', icon: new URL('@/assets/favicons/privacy.png', import.meta.url).href },
   { title: 'Windows Update', icon: new URL('@/assets/favicons/sync.png', import.meta.url).href },
-]
+] as const
 </script>
 
 <template>
   <aside>
     <input id="search" type="search" placeholder="Search settings" />
     <ul>
-      <li v-for="item in items" :key="item.title" :class="{ active: currentTab === item.title }" @click="currentTab = item.title">
+      <li v-for="item in items" :key="item.title" :class="{ active: currentTab.includes(item.title) }" @click="currentTab = [item.title, undefined]">
         <img :src="item.icon" width="16" />
         {{ item.title }}
       </li>
@@ -34,6 +34,7 @@ const items = [
 <style scoped>
 aside {
   width: 250px;
+  min-width: 250px;
   height: 100%;
   font-weight: 400;
   padding: 8px;
@@ -46,7 +47,7 @@ aside {
     background-color: rgba(255, 255, 255, 0.7);
     border: none;
     border-bottom: #888888 1px solid;
-    margin-bottom: 8px;
+    margin-bottom: 24px;
     border-radius: 4px;
   }
 

@@ -7,7 +7,7 @@ export type SettingsTitle =
   | 'Apps'
   | 'Accounts'
   | 'Language and time'
-  | 'Gameing'
+  | 'Gaming'
   | 'Accessibility'
   | 'Privacy and security'
   | 'Windows Update'
