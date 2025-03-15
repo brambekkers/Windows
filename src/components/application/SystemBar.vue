@@ -60,7 +60,8 @@ const { closeApplication } = useApplicationStore()
     gap: 10px;
 
     .tab {
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: var(--app-secondary-panel-color);
+      display: flex;
       height: 32px;
       display: flex;
       gap: 8px;
@@ -86,9 +87,10 @@ const { closeApplication } = useApplicationStore()
       display: flex;
       justify-content: center;
       align-items: center;
+      filter: var(--filter-invert);
 
       &:hover {
-        background-color: rgba(255, 255, 255, 0.46);
+        background-color: var(--button-hover-color);
       }
     }
   }

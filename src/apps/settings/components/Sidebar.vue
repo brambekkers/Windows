@@ -44,7 +44,8 @@ aside {
     margin: 0 4px;
     padding: 8px;
     border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: var(--app-secondary-panel-color);
+    display: flex;
     border: none;
     border-bottom: #888888 1px solid;
     margin-bottom: 24px;

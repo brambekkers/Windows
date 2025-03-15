@@ -9,7 +9,7 @@ import shutdown from '@/assets/icons/shutdown.svg'
       <span>Bram Bekkers</span>
     </button>
     <button id="shut-down">
-      <shutdown height="32" />
+      <shutdown height="28" class="icon" />
     </button>
   </footer>
 </template>
@@ -18,8 +18,9 @@ import shutdown from '@/assets/icons/shutdown.svg'
 footer {
   max-height: 80px;
   height: 80px;
-  background-color: rgba(174, 192, 236, 0.34);
+  background-color: var(--start-panel-color);
   padding: 0 70px;
+  border-top: var(--app-border);
 
   display: flex;
   justify-content: space-between;
@@ -37,7 +38,7 @@ footer {
     padding: 8px 12px;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.46);
+      background-color: var(--button-hover-color);
     }
 
     img {
@@ -58,8 +59,12 @@ footer {
     background-color: rgba(0, 0, 0, 0);
     transition: all 200ms ease-in-out;
 
+    .icon {
+      filter: var(--filter-invert);
+    }
+
     &:hover {
-      background-color: rgba(255, 255, 255, 0.46);
+      background-color: var(--button-hover-color);
     }
   }
 }

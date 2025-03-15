@@ -13,21 +13,44 @@
 
 :root[class*='light'] {
   --text-color: #2f2f2f;
+  --scrollbar-color: rgba(0, 0, 0, 0.4);
   --filter-invert: invert(0);
+
+  /* General */
+  --button-hover-color: rgba(255, 255, 255, 0.46);
 
   /* application */
   --app-color-rgb: 240, 240, 240;
   --app-panel-color: rgba(255, 255, 255, 0.9);
+  --app-secondary-panel-color: rgba(255, 255, 255, 0.7);
   --app-panel-hover-color: rgba(248, 248, 248, 0.9);
   --app-border-color: rgb(229, 229, 229);
+
+  /* start */
+  --start-panel-color: rgba(174, 192, 236, 0.34);
+
+  /* input */
+  --input-background-color: rgba(255, 255, 255, 1);
 }
 
 :root[class*='dark'] {
   --text-color: #fafafa;
+  --scrollbar-color: rgba(255, 255, 255, 0.4);
   --filter-invert: invert(1);
+
+  /* General */
+  --button-hover-color: rgba(0, 0, 0, 0.46);
+
   /* application */
   --app-color-rgb: 32, 32, 32;
   --app-panel-color: rgba(43, 43, 43, 0.9);
+  --app-secondary-panel-color: rgba(35, 35, 35, 0.7);
   --app-panel-hover-color: rgba(50, 50, 50, 0.9);
   --app-border-color: rgb(29, 29, 29);
+
+  /* start */
+  --start-panel-color: rgb(31, 34, 38);
+
+  /* input */
+  --input-background-color: rgba(35, 35, 35, 1);
 }

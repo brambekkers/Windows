@@ -15,24 +15,24 @@ defineProps<{
   <nav>
     <section class="navigation">
       <button>
-        <Left width="16" @click="$emit('back')" />
+        <Left width="16" @click="$emit('back')" class="icon" />
       </button>
       <button>
-        <Right width="16" @click="$emit('forward')" />
+        <Right width="16" @click="$emit('forward')" class="icon" />
       </button>
       <button>
-        <Up width="16" @click="$emit('up')" />
+        <Up width="16" @click="$emit('up')" class="icon" />
       </button>
       <button>
-        <Refresh width="16" />
+        <Refresh width="16" class="icon" />
       </button>
     </section>
     <section class="path">
-      <PC height="16" @click="$emit('to', [])" />
-      <Crumb height="16" />
+      <PC height="16" @click="$emit('to', [])" class="icon" />
+      <Crumb height="16" class="icon" />
       <p @click="$emit('to', [])">This PC</p>
       <template v-for="p in path" :key="p">
-        <Crumb height="16" />
+        <Crumb height="16" class="icon" />
         <p @click="$emit('to', path.slice(0, path.indexOf(p) + 1))">
           {{ p }}
         </p>
@@ -43,7 +43,7 @@ defineProps<{
 
 <style scoped>
 nav {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: var(--app-secondary-panel-color);
   display: flex;
   align-items: center;
   height: 48px;
@@ -59,8 +59,11 @@ nav {
       border: none;
       background-color: transparent;
 
+      .icon {
+        filter: var(--filter-invert);
+      }
       &:hover {
-        background-color: rgba(255, 255, 255, 0.46);
+        background-color: var(--button-hover-color);
       }
     }
   }
@@ -68,7 +71,7 @@ nav {
   .path {
     max-height: 32px;
     flex: 1;
-    background-color: rgb(251, 252, 253);
+    background-color: var(--input-background-color);
     border-radius: 4px;
 
     padding: 8px 12px;
@@ -77,6 +80,10 @@ nav {
     gap: 12px;
 
     text-wrap: nowrap;
+
+    .icon {
+      filter: var(--filter-invert);
+    }
   }
 }
 </style>

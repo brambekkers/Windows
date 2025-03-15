@@ -41,7 +41,8 @@ const setWallpaper = (i: number) => (backgroundVar.value = `url(${wallpapers.val
       border-radius: 8px;
 
       &:hover {
-        border: solid 1px rgba(255, 255, 255, 0.7);
+        border: solid 1px var(--app-secondary-panel-color);
+        display: flex;
       }
     }
   }

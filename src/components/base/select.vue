@@ -19,16 +19,15 @@ select {
   padding: 8px 8px;
   border-radius: 4px;
   font-size: 14px;
-  background-color: white;
+  background-color: var(--input-background-color);
 
   border: rgba(0, 0, 0, 0.06) 1px solid;
-  background: url(../../assets/icons/system/chevronDown.svg) 90% / 5% no-repeat #fff;
+  background: url(../../assets/icons/system/chevronDown.svg) 90% / 5% no-repeat var(--input-background-color);
 
   appearance: base-select;
-  color: #71717a;
   box-sizing: border-box;
   padding: 0.5rem 0.75rem;
-  border: 1px solid #e4e4e7;
+  border: var(--app-border);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   cursor: pointer;
 
@@ -46,7 +45,7 @@ select {
   }
 
   &:has(option:not([hidden]):checked) {
-    color: #18181b;
+    color: var(--text-color);
   }
 
   &:focus-visible {
@@ -59,6 +58,8 @@ select {
   }
 
   &::picker(select) {
+    background-color: var(--input-background-color);
+    color: var(--text-color);
     appearance: base-select;
     border: 1px solid #e4e4e7;
     padding: 0.25rem;
@@ -115,8 +116,8 @@ select {
 
     &:hover,
     &:focus-visible {
-      background-color: #f4f4f5;
-      color: #18181b;
+      background-color: var(--button-hover-color);
+      color: var(--text-color);
     }
   }
 }

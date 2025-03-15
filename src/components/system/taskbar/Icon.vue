@@ -30,11 +30,11 @@ const { hideBadge = false } = defineProps<{
   }
 
   &.is-main {
-    background: rgba(255, 255, 255, 0.46);
+    background: var(--button-hover-color);
     box-shadow: rgba(0, 0, 0, 0.01) 4px 4px 8px;
   }
   &:hover {
-    background: rgba(255, 255, 255, 0.46);
+    background: var(--button-hover-color);
   }
   .active-badge {
     background-color: var(--windows-accent-color);

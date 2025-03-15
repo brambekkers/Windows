@@ -50,7 +50,7 @@ const click = () => {
     transition: all 200ms ease-in-out;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.46);
+      background-color: var(--button-hover-color);
     }
 
     .icon {
