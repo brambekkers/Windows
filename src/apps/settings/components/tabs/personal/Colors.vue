@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import Card from '../../base/Card.vue'
 import Tile from '../../base/Tile.vue'
+import Select from '@/components/base/Select.vue'
 
-const { accentColorVar } = storeToRefs(useLayoutStore())
+const { accentColorVar, colorMode } = storeToRefs(useLayoutStore())
 
 const windowsColors = [
   '#ffb900',
@@ -61,28 +62,41 @@ const setColor = (color: WindowsColor) => (accentColorVar.value = color)
 </script>
 
 <template>
-  <Tile id="dark-mode" title="Choose your mode" subtext="The color mode that will be applied in Windows and other apps" icon="brush" />
+  <Tile id="dark-mode" title="Choose your mode" subtext="The color mode that will be applied in Windows and other apps" icon="brush">
+    <template #end>
+      <Select
+        v-model="colorMode"
+        :options="[
+          { value: 'light', label: 'Light' },
+          { value: 'dark', label: 'Dark' },
+        ]"
+      />
+    </template>
+  </Tile>
 
   <Card id="color-settings">
-    <Tile id="accent-color" title="Accent color" icon="brush" />
+    <Tile id="accent-color" title="Accent color" icon="color" />
 
-    <p>Windows Colors</p>
-    <div class="colors">
-      <span
-        v-for="color of windowsColors"
-        :key="color"
-        :style="{ background: color }"
-        class="color"
-        :class="{ active: color === accentColorVar }"
-        @click="setColor(color)"
-      >
-        <div v-if="color === accentColorVar" class="selected">
-          <!-- checkmark -->
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.5 4.5L8.5 11.5L4.5 7.5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </div>
-      </span>
+    <div class="colors-container">
+      <p>Windows Colors</p>
+
+      <div class="colors">
+        <span
+          v-for="color of windowsColors"
+          :key="color"
+          :style="{ background: color }"
+          class="color"
+          :class="{ active: color === accentColorVar }"
+          @click="setColor(color)"
+        >
+          <div v-if="color === accentColorVar" class="selected">
+            <!-- checkmark -->
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.5 4.5L8.5 11.5L4.5 7.5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </span>
+      </div>
     </div>
   </Card>
 </template>
@@ -92,46 +106,53 @@ const setColor = (color: WindowsColor) => (accentColorVar.value = color)
   margin-bottom: 4px;
 }
 #color-settings {
-  max-width: 100%;
-
   #accent-color {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-inline: none;
+    border-top: none;
   }
-  p {
-    margin-bottom: 8px;
-  }
 
-  .colors {
-    display: grid;
-    grid-template-columns: repeat(9, 50px);
-    padding-bottom: 8px;
-    overflow-x: scroll;
+  .colors-container {
+    padding: 12px 48px;
 
-    flex-wrap: wrap;
-    gap: 4px;
+    p {
+      margin-bottom: 8px;
+    }
 
-    .color {
-      position: relative;
-      width: 50px;
-      height: 50px;
+    .colors {
+      display: grid;
+      grid-template-columns: repeat(9, 50px);
+      padding-bottom: 8px;
+      overflow-x: scroll;
 
-      object-fit: cover;
-      border-radius: 4px;
+      flex-wrap: wrap;
+      gap: 4px;
 
-      &:hover {
-        border: solid 1px rgba(255, 255, 255, 0.7);
-      }
+      .color {
+        position: relative;
+        width: 50px;
+        height: 50px;
 
-      &.active {
-        border: solid 2px rgba(0, 0, 0, 0.8);
-      }
+        object-fit: cover;
+        border-radius: 4px;
 
-      .selected {
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        top: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.8);
+        &:hover {
+          border: solid 1px rgba(255, 255, 255, 0.7);
+        }
+
+        &.active {
+          border: solid 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .selected {
+          position: absolute;
+          width: 18px;
+          height: 18px;
+          top: 0;
+          right: 0;
+          background: rgba(0, 0, 0, 0.8);
+        }
       }
     }
   }

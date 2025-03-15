@@ -55,8 +55,8 @@ const clickApplication = (type: ApplicationTypes) => {
 
   bottom: 0;
   width: 100%;
-  background-color: var(--transparent-color);
-  backdrop-filter: blur(20px);
+  background-color: var(--app-transparent-color);
+  backdrop-filter: var(--app-backdrop-filter);
   z-index: 100;
 
   display: flex;
@@ -69,8 +69,8 @@ const clickApplication = (type: ApplicationTypes) => {
     gap: 8px;
 
     .ms-logo {
-      background: var(--transparent-color);
-      backdrop-filter: blur(20px);
+      background: var(--app-transparent-color);
+      backdrop-filter: var(--app-backdrop-filter);
       border-radius: 4px;
     }
   }

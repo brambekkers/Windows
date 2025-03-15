@@ -37,8 +37,8 @@ onClickOutside(startMenu, (event) => {
 
   width: min(680px, 80dvw);
   height: min(800px, 80dvh);
-  background-color: var(--transparent-color);
-  backdrop-filter: blur(20px);
+  background-color: var(--app-transparent-color);
+  backdrop-filter: var(--app-backdrop-filter);
 
   border-radius: var(--app-border-radius);
   box-shadow:

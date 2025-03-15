@@ -19,8 +19,8 @@ footer {
   padding: 0 16px;
   display: flex;
   align-items: center;
-  border-top: #e5e5e5 1px solid;
-  background-color: rgb(249, 249, 249);
+  border-top: var(--app-border);
+  background-color: var(--app-panel-color);
 
   p {
     font-size: 12px;

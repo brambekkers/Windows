@@ -41,15 +41,15 @@ const changePath = (newPath: string[]) => {
 
 <style scoped>
 .container {
-  background-color: rgb(249, 249, 249);
+  background-color: var(--app-panel-color);
   flex: 1;
-  border-top: #e5e5e5 1px solid;
+  border-top: var(--app-border);
   display: flex;
 
   aside {
     width: 200px;
     height: 100%;
-    border-right: #e5e5e5 1px solid;
+    border-right: var(--app-border);
   }
   main {
     flex: 1;

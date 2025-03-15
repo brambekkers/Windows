@@ -60,7 +60,7 @@ button {
 
   &.selected {
     background-color: rgba(0, 0, 0, 0.05);
-    border: #e5e5e5 1px solid;
+    border: var(--app-border);
   }
 
   &:hover {

@@ -195,7 +195,7 @@
         "npm:unplugin-auto-import@^19.1.1",
         "npm:vite-plugin-vue-devtools@^7.7.2",
         "npm:vite-svg-loader@^5.1.0",
-        "npm:vite@^6.2.1",
+        "npm:vite@^6.2.2",
         "npm:vue-tsc@^2.2.2",
         "npm:vue@^3.5.13"
       ]

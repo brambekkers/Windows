@@ -98,6 +98,7 @@ const { closeApplication } = useApplicationStore()
     display: flex;
 
     .icon {
+      filter: var(--filter-invert);
       height: 100%;
       padding: 0 18px;
 

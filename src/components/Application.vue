@@ -84,10 +84,10 @@ onMounted(() => {
 
 <style scoped>
 .application-frame {
-  background: rgb(230, 230, 230, 0.7);
+  background: var(--app-background-color);
 
   position: fixed;
-  backdrop-filter: var(--app-backdrop-filter);
+  backdrop-filter: blur(60px);
 
   min-width: 400px;
   min-height: 200px;

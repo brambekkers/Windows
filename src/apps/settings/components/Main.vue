@@ -19,7 +19,7 @@ const clickTitle = (title: SettingsTitle, i: number) => {
     <div class="tabs">
       <template v-for="(title, i) in currentTab" :key="title">
         <h1 :class="{ inactive: i === 0 && currentTab[1] }" @click="clickTitle(title, i)">{{ title }}</h1>
-        <ChevronRight v-if="currentTab[i + 1]" width="25" height="25" />
+        <ChevronRight v-if="currentTab[i + 1]" class="icon" width="25" height="25" />
       </template>
     </div>
     <Start v-if="currentTab[0] === 'Start'" />
@@ -47,6 +47,10 @@ main {
       &.inactive {
         opacity: 0.6;
       }
+    }
+
+    .icon {
+      filter: var(--filter-invert);
     }
   }
 }

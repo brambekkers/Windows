@@ -5,7 +5,6 @@ const wallpapers = ref([])
 const { backgroundVar } = storeToRefs(useLayoutStore())
 
 for (let i = 1; i <= 17; i++) {
-  console.log(i)
   wallpapers.value.push(new URL(`../../../../../assets/wallpaper/wallpaper${i}.webp`, import.meta.url))
 }
 

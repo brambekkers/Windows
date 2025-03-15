@@ -5,10 +5,10 @@ import Brush from '@/assets/fluent/brush.svg'
 import Color from '@/assets/fluent/color.svg'
 import Keyboard from '@/assets/fluent/keyboard.svg'
 
-defineProps<{
+const { subtext = '' } = defineProps<{
   icon: 'color' | 'image' | 'brush' | 'keyboard'
   title: string
-  subtext: string
+  subtext?: string
 }>()
 </script>
 
@@ -24,17 +24,20 @@ defineProps<{
       <p class="subtext">{{ subtext }}</p>
     </div>
 
-    <ChevronRight width="22" height="22" />
+    <div v-if="$slots.end">
+      <slot name="end" />
+    </div>
+    <ChevronRight v-else width="22" height="22" class="icon" />
   </section>
 </template>
 
 <style scoped>
 section {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: var(--app-panel-color);
   height: 66px;
   width: 100%;
   border-radius: 4px;
-  border: #e5e5e5 1px solid;
+  border: var(--app-border);
 
   display: flex;
   align-items: center;
@@ -43,11 +46,12 @@ section {
   transition: all 100ms ease-in-out;
 
   &:hover {
-    background-color: rgba(248, 248, 248, 0.9);
+    background-color: var(--app-panel-hover-color);
   }
 
   .icon {
     margin-right: 16px;
+    filter: var(--filter-invert);
   }
 
   .content {

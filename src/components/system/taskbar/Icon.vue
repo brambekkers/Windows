@@ -35,7 +35,6 @@ const { hideBadge = false } = defineProps<{
   }
   &:hover {
     background: rgba(255, 255, 255, 0.46);
-    /* backdrop-filter: blur(20px); */
   }
   .active-badge {
     background-color: var(--windows-accent-color);

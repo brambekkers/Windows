@@ -1,5 +1,5 @@
-@import './reset.css';
 @import './variables.css';
+@import './reset.css';
 
 #windows {
   height: 100dvh;

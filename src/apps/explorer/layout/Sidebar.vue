@@ -98,7 +98,7 @@ const sections = [
 aside {
   width: 200px;
   height: 100%;
-  border-right: #e5e5e5 1px solid;
+  border-right: var(--app-border);
   font-weight: 400;
   padding: 8px 0;
 
@@ -122,7 +122,7 @@ aside {
     hr {
       margin-top: 16px;
       border: none;
-      border-bottom: #e5e5e5 1px solid;
+      border-bottom: var(--app-border);
     }
   }
 }
