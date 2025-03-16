@@ -4,9 +4,13 @@ import Image from '@/assets/fluent/image.svg'
 import Brush from '@/assets/fluent/brush.svg'
 import Color from '@/assets/fluent/color.svg'
 import Keyboard from '@/assets/fluent/keyboard.svg'
+import Laptop from '@/assets/fluent/laptop.svg'
+import VolumeFull from '@/assets/fluent/volumeFull.svg'
+import VolumeHalf from '@/assets/fluent/volumeHalf.svg'
+import TouchPointer from '@/assets/fluent/touchPointer.svg'
 
 const { subtext = '' } = defineProps<{
-  icon: 'color' | 'image' | 'brush' | 'keyboard'
+  icon: 'color' | 'image' | 'brush' | 'keyboard' | 'laptop' | 'volumeFull' | 'volumeHalf' | 'touchPointer'
   title: string
   subtext?: string
 }>()
@@ -18,6 +22,10 @@ const { subtext = '' } = defineProps<{
     <Brush v-if="icon === 'brush'" width="24" height="24" class="icon" />
     <Keyboard v-if="icon === 'keyboard'" width="24" height="24" class="icon" />
     <Color v-if="icon === 'color'" width="24" height="24" class="icon" />
+    <Laptop v-if="icon === 'laptop'" width="24" height="24" class="icon" />
+    <VolumeFull v-if="icon === 'volumeFull'" width="18" height="18" class="icon" />
+    <VolumeHalf v-if="icon === 'volumeHalf'" width="18" height="18" class="icon" />
+    <TouchPointer v-if="icon === 'touchPointer'" width="20" height="20" class="icon" />
 
     <div class="content">
       <p class="title">{{ title }}</p>

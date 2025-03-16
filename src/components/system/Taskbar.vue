@@ -52,6 +52,7 @@ const clickApplication = (type: ApplicationTypes) => {
   height: var(--taskbar-height);
   position: absolute;
   transform-style: preserve-3d;
+  border-top: var(--app-border);
 
   bottom: 0;
   width: 100%;
@@ -67,6 +68,7 @@ const clickApplication = (type: ApplicationTypes) => {
     display: flex;
     align-items: center;
     gap: 8px;
+    translate: 0 -1px;
 
     .ms-logo {
       background: var(--app-transparent-color);

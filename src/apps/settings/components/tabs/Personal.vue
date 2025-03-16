@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Tile from '../base/Tile.vue'
+import Screen from '../base/Screen.vue'
 import Background from './personal/Background.vue'
 import Colors from './personal/Colors.vue'
 
@@ -39,6 +40,7 @@ const Tiles = [
 </script>
 
 <template>
+  <Screen />
   <section v-if="!currentTab[1]" class="tiles">
     <Tile v-for="{ title, subtext, icon } in Tiles" :key="title" :title :subtext :icon @click="currentTab = [mainTab, title]" />
   </section>
@@ -49,6 +51,10 @@ const Tiles = [
 </template>
 
 <style scoped>
+.screen {
+  max-width: 400px;
+  margin-bottom: 16px;
+}
 .tiles {
   display: flex;
   flex-direction: column;
